@@ -36,11 +36,6 @@ public class birdcontrol : MonoBehaviour {
             }
         }
 
-        //if (Input.GetMouseButton(0))
-        //{
-        //    myBody.velocity = new Vector2(myBody.velocity.x, bounceForce);
-        //}
-
         if (myBody.velocity.y > 0)
         {
             float angel = Mathf.Lerp(0, 45, myBody.velocity.y / 7);
