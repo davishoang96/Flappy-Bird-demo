@@ -19,8 +19,11 @@ public class pipeControl : MonoBehaviour {
     void pipeMovement()
     {
         Vector3 temp = transform.position;
+       
         temp.x = temp.x - speed * Time.deltaTime;
+   
         transform.position = temp;
+
     }
     void OnTriggerEnter2D(Collider2D target)
     {
