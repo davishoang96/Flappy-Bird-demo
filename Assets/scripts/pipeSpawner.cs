@@ -21,4 +21,10 @@ public class pipeSpawner : MonoBehaviour {
         Instantiate(pipeScoreHolder, temp, Quaternion.identity);
         StartCoroutine(Spawner());
     }
+
+    //void OnCollisionEnter2D(Collision2D target)
+    //{
+
+    //}
+
 }

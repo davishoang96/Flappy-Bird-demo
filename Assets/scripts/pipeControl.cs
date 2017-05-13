@@ -22,4 +22,11 @@ public class pipeControl : MonoBehaviour {
         temp.x = temp.x - speed * Time.deltaTime;
         transform.position = temp;
     }
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "delete")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
