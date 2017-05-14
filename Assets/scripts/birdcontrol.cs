@@ -11,6 +11,11 @@ public class birdcontrol : MonoBehaviour {
     private bool isAlive;
     private bool didFlap;
 
+    public float flag = 0;
+    public static birdcontrol instance;
+
+    private GameObject spawner;
+
     [SerializeField] //
     private AudioSource audioSource;
 
@@ -24,7 +29,18 @@ public class birdcontrol : MonoBehaviour {
 		myBody = GetComponent<Rigidbody2D> ();
 
         anim = GetComponent<Animator>();
+
+        makeInstance();
+        spawner = GameObject.Find("pipeSpawner");
 	}
+
+    void makeInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -76,8 +92,14 @@ public class birdcontrol : MonoBehaviour {
     {
         if(target.gameObject.tag == "pipe" || target.gameObject.tag == "ground")
         {
-            anim.SetTrigger("died");
-            audioSource.PlayOneShot(diedClip);
+            flag = 1;
+            if(isAlive)
+            {
+                isAlive = false;
+                Destroy(spawner);
+                anim.SetTrigger("died");
+                audioSource.PlayOneShot(diedClip);
+            }
         }
     }
 }

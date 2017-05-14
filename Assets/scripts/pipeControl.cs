@@ -13,6 +13,12 @@ public class pipeControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(birdcontrol.instance != null)
+        {
+            if (birdcontrol.instance.flag == 1)
+                Destroy(GetComponent<pipeControl>());
+    
+        }
         pipeMovement();
 	}
 
