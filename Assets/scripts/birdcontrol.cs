@@ -12,6 +12,7 @@ public class birdcontrol : MonoBehaviour {
     private bool didFlap;
 
     public float flag = 0;
+    public int score;
     public static birdcontrol instance;
 
     private GameObject spawner;
@@ -84,6 +85,11 @@ public class birdcontrol : MonoBehaviour {
     {
         if(target.gameObject.tag == "pipeHolder")
         {
+            score++;
+            if (gameplayController.instance != null)
+            {
+                gameplayController.instance._setScore(score);
+            }
             audioSource.PlayOneShot(pingClip);
         }
     }
@@ -99,6 +105,10 @@ public class birdcontrol : MonoBehaviour {
                 Destroy(spawner);
                 anim.SetTrigger("died");
                 audioSource.PlayOneShot(diedClip);
+            }
+            if(gameplayController.instance!=null)
+            {
+                gameplayController.instance.showPanel(score);
             }
         }
     }
